@@ -1,0 +1,29 @@
+Project 6
+Given a set of vertices, and a set of edges in an adjacency list, determine all existing cycles (if any) in a
+directed graph.
+Example
+Input
+Vertices (as an array of strings within the program)
+vertices = { ‘A’, ‘B’, ‘C’, ‘D’, ‘E’}
+Adjacency list (as an array of linked lists)
+list=
+A -> (B, 18) -> (C, 14) -> (E, 16)
+B -> (C, 2) -> (D, 10)
+C -> (E, 6)
+D -> (A, 3) -> (C, 15) -> (E, 11)
+E -> (C, 17)
+Output
+Cycles (as an array of lists within the program)
+cycles=
+[ {“A”, “B”, “D”},
+{“C”, “E”} ]
+There are many possible outcomes, since a cycle could start in any of its vertex members, and the list of
+cycles could start in any cycle e.g.
+cycles=
+[ {“C”, “E”},
+{“B”, “D”, “A”} ]
+The cycle list above is valid (other valid solutions are not shown). Your solution only needs to find one of
+the valid solutions.
+Also, notice the vertex list is not a set (where member order is not relevant) but a sequence (where
+order matters).
+On the other hand, the cycle list is a set (where the order between cycles is not relevant).
