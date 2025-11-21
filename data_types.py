@@ -52,7 +52,7 @@ E -> None
 """
 class AdjacencyList:    
     def __init__(self):
-        self.lst: dict(LinkedList) = {
+        self.lst: dict[str, LinkedList] = {
             "A":LinkedList([]), 
             "B":LinkedList([]), 
             "C":LinkedList([]), 

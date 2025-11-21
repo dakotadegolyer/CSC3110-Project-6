@@ -1,10 +1,10 @@
-# from DFS_Algo import DFS_Algo
+from dfsApproach import dfsApproach
 # from BFS_Algo import BFS_Algo
 import time as t
 from data_types import AdjacencyList
 
 def DFS_Algo(adjList: AdjacencyList): 
-    
+    dfsApproach(adjList)
     t.sleep(2)
     return
 
