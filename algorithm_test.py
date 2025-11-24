@@ -1,5 +1,5 @@
 from dfsApproach import dfsApproach
-# from BFS_Algo import BFS_Algo
+from bfs_topological import BFS_Topological
 import time as t
 from data_types import AdjacencyList
 
@@ -9,6 +9,9 @@ def DFS_Algo(adjList: AdjacencyList):
     return
 
 def BFS_Algo(adjList: AdjacencyList):
+    bfs_topoligical = BFS_Topological(adjList)
+    bfs_topoligical.process_indegree()
+    print(bfs_topoligical.find_all_cycles())
     t.sleep(1)
     return
 
