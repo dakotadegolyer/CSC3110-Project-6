@@ -1,0 +1,62 @@
+cycles <- empty set
+
+function canonical_cycle(cycle[0..n-1]):
+    // determines the smallest canonical rotation of a list
+    // input: a list of characters that represents a cycle in the graph
+    // output: the smallest lexicographic list in rotationsList
+    t <- tuple(cycle)
+    rotationsList <- [] // list of lists 
+    i <- 0
+    l <- length(t)
+
+    while i < l:
+        rotatedList <- rotate t once to the left
+        add rotated list to rotationsList
+    
+    return the smallest lexicographic list in rotationsList
+    
+function checkCycles():
+    // filters the global list of found cycles to ensure distinct cycles
+    // output: the list of distinct cycles
+
+    output <- []
+
+    for each cycle in the global cycles list:
+        c <- canonical_cycle(cycle)
+        if c not in output, add c to the output
+
+function dfsHelper(node, graph, visited[0..n-1], locations):
+    // a helper function for the dfs approach
+    // inputs: 
+            a node in the adjacancy list, 
+            the entire graph, 
+            a list of nodes previously visited,
+            a dictionary of items in visited with their indicies as values 
+    
+    while the node exists:
+        value <- node value
+        if node has not been visited:
+            add value to the visited list
+            k <- value
+            v <- length(visited) - 1
+            add an item to the dictionary with key k and value v
+            defHelper(graph[value], graph, visited, locations)
+            remove value from visited
+            remove value from locations
+        
+        else:
+            i <- locations[value]
+            cycle <- visited[i..n-1]
+            add cycle to the global cycles list
+
+    node <- node.next
+
+def dfsApproach(graph):
+    for each node in the graph:
+        adjList <- the node's adjacancy list
+        visited <- []
+        locations <- empty set
+        v <- node value
+        add v to visited
+        add v to the dictionary with value 0
+        dfsHelper(node, graph, visited, locations)
