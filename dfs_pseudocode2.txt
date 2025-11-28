@@ -1,0 +1,30 @@
+function FindCycles(AdjacencyList):
+	cycles <- {}
+	for v in AdjacencyList.keys():		# Try each vertex as a root
+		root <- v
+		path <- [v]
+		visited_set <- {v}
+		DFS(root, path, visited_set, cycles, AdjacencyList)	
+	return Deduplicate(cycles)
+	
+function DFS(root, path, visited_set, cycles, AdjacencyList):
+	currVertex = path[-1]                                       
+	currNeighborNode <- AdjacencyList[currVertex].head          # Explore neighbors of most recent vertex in path
+	while currNeighborNode != NULL:
+		currNeighborVertex <- currNeighborNode.val
+		if currNeighborVertex == root && length(path) > 1:      # If cycle is found
+			cycles.add(copy(path))
+		
+		else if currNeighborVertex not in visited_set:          # If unexplored neighbor vertex is found
+			path.push(currNeighborVertex)
+			visited_set.add(currNeighborVertex)
+			DFS(root, path, visited_set, cycles, AdjacencyList) # Explore neighbor vertex
+			path.pop()
+			visited_set.remove(currNeighborVertex)		        # Backtrack when done exploring neighbor vertex
+		currNeighborNode <- currNeighborNode.next
+		
+function Deduplicate(cycles):
+	uniqueCycles <- {}
+	for cycle in cycles:
+		uniqueCycles.add(canonical_cycle(cycle))
+	return uniqueCycles
