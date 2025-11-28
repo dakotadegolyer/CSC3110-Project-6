@@ -39,8 +39,8 @@ function dfsHelper(node, graph, visited[0..n-1], locations):
             add value to the visited list
             k <- value
             v <- length(visited) - 1
-            add an item to the dictionary with key k and value v
-            defHelper(graph[value], graph, visited, locations)
+            add an item to the locations dictionary with key k and value v
+            dfsHelper(graph[value], graph, visited, locations)
             remove value from visited
             remove value from locations
         
