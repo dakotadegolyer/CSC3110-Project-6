@@ -1,19 +1,19 @@
 from dfsApproach import dfsApproach
 from bfs_topological import BFS_Topological
+from brute_force_algo import bruteForceAlgo
 import time as t
 from data_types import AdjacencyList
 
 def DFS_Algo(adjList: AdjacencyList): 
     dfsApproach(adjList)
-    t.sleep(2)
-    return
 
 def BFS_Algo(adjList: AdjacencyList):
     bfs_topoligical = BFS_Topological(adjList)
     bfs_topoligical.process_indegree()
     print(bfs_topoligical.find_all_cycles())
-    t.sleep(1)
-    return
+
+def BRUTEFORCE_Algo(adjList: AdjacencyList):
+    print(bruteForceAlgo(adjList))
 
 def time(algo, lst: AdjacencyList) -> float:
     start = t.time()
@@ -30,6 +30,11 @@ def testAlgos(adjList: AdjacencyList):
     print("running BFS algorithm...")
     resBFS = time(BFS_Algo, adjList)
     print("BFS algorithm complete, time taken: " + str(resBFS) + "s")
+    print("running brute force algorithm...")
+    resBFS = time(BRUTEFORCE_Algo, adjList)
+    print("brute force algorithm complete, time taken: " + str(resBFS) + "s")
+
+    
 
 def createTestList():
     
