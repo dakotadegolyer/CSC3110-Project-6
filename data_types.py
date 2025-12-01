@@ -24,6 +24,8 @@ class LinkedList:
             return
         cur = self.head
         while cur.next:
+            if cur.val == node.val:
+                return
             cur = cur.next
         cur.next = node
     
@@ -34,6 +36,8 @@ class LinkedList:
             return
         cur = self.head
         while cur.next:
+            if cur.val == node.val:
+                return
             cur = cur.next
         cur.next = node
 
@@ -61,6 +65,16 @@ class AdjacencyList:
         
     def __getitem__(self, key):
         return self.lst[key]
+    
+    def addnew(self, key):
+        if key not in self.lst.keys():
+            self.lst[key] = LinkedList([])
+
+    def connect(self, key1: str, key2: str):
+        if key1 not in self.lst.keys() or key2 not in self.lst.keys():
+            return
+        else:
+            self.lst[key1].insert(key2)
     
     def __repr__(self):
         output = ""

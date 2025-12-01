@@ -4,7 +4,7 @@ from dfsApproach import canonical_cycle
 cycles: set[tuple[str]] = set()
 
 def bruteForceAlgo(adj: AdjacencyList):
-    combinationHelper(adj, [], [i for i in list(adj.lst.keys())])
+    permutationHelper(adj, [], [i for i in list(adj.lst.keys())])
     return cycles
 
 # returns true if val is in linked
@@ -16,21 +16,12 @@ def searchLinkedList(linked: LinkedList, val: str):
         cur = cur.next
     return False
 
-# converts linked list to regular list
-def linkedListToReg(linked:LinkedList):
-    cur = linked.head
-    out = []
-    while cur != None:
-        out.append(cur.val)
-        cur = cur.next
-    return out
-
 # checks if the vertices in the path all connect, and if the last vertex connects to the start
 def checkCycle(adj, path):
     if len(path) == 0:
         return False
     
-    if len(path) == 1:
+    elif len(path) == 1:
         if searchLinkedList(adj[path[0]], path[0]):
             return True
         else:
@@ -57,7 +48,7 @@ def checkCycle(adj, path):
         return False
 
 # calls test() on every path starting with curPath, using some permutation of the vertices in remainingVertices
-def combinationHelper(adj: AdjacencyList, curPath: list(str), remainingVertices: set(str)):
+def permutationHelper(adj: AdjacencyList, curPath: list(str), remainingVertices: set(str)):
     test(adj, curPath)
 
     for v in remainingVertices:
@@ -65,7 +56,7 @@ def combinationHelper(adj: AdjacencyList, curPath: list(str), remainingVertices:
         newRemaining.remove(v)
         newCurPath = [i for i in curPath]
         newCurPath.append(v)
-        combinationHelper(adj, newCurPath, newRemaining)
+        permutationHelper(adj, newCurPath, newRemaining)
 
             
 # checks if the path is a cycle, adds it to cycles if so
