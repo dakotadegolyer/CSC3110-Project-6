@@ -1,6 +1,6 @@
 function brute_force_algo(adj: AdjacencyList):
     (global) cycles <- (empty set)
-    testCombinations(adj, [ ], adj.nodes())
+    combinations_helper(adj, [ ], adj.nodes())
     return cycles
 
 function check_cycle(adj: AdjacencyList, path: list(Node)):
